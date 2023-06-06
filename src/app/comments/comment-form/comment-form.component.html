@@ -1,9 +1,9 @@
 <p>comment-form works!</p>
 
-<h2 *ngIf="bookForm.get('id')?.value === 0">Creación de libro</h2>
-<h2 *ngIf="!(bookForm.get('id')?.value === 0)">Editando libro {{bookForm.get('id')?.value}}</h2>
+<h2 *ngIf="commentForm.get('id')?.value === 0">Creación de libro</h2>
+<h2 *ngIf="!(commentForm.get('id')?.value === 0)">Editando libro {{commentForm.get('id')?.value}}</h2>
 
-<form [formGroup]="bookForm" (ngSubmit)="save()">
+<form [formGroup]="commentForm" (ngSubmit)="save()">
 
     <input type="hidden" formControlName="id">
 
@@ -24,7 +24,7 @@
     <mat-form-field floatLabel="always">
         <mat-label>Número de páginas</mat-label>
         <input matInput type="number" placeholder="0" formControlName="numPages" min="30" step="0">
-        <mat-error *ngIf="bookForm.get('numPages')?.invalid && bookForm.get('numPages')?.touched">
+        <mat-error *ngIf="commentForm.get('numPages')?.invalid && commentForm.get('numPages')?.touched">
             El número páginas mínimo es de 30.
         </mat-error>
     </mat-form-field>
@@ -34,7 +34,7 @@
         <input matInput type="number" class="example-right-align" placeholder="0" step="0.01" min="5" max="500"
             formControlName="price">
         <span matTextPrefix>&euro;&nbsp;</span>
-        <mat-error *ngIf="bookForm.get('price')?.invalid && bookForm.get('price')?.touched">
+        <mat-error *ngIf="commentForm.get('price')?.invalid && commentForm.get('price')?.touched">
             El precio debe estar comprendido en un rango de 5 y 500 €.
         </mat-error>
     </mat-form-field>
@@ -56,7 +56,7 @@
                 {{author.fullName}}
             </mat-option>
         </mat-select>
-        <mat-error *ngIf="bookForm.get('authorId')?.invalid && bookForm.get('authorId')?.touched">
+        <mat-error *ngIf="commentForm.get('authorId')?.invalid && commentForm.get('authorId')?.touched">
             Es obligatorio seleccionar un autor.
         </mat-error>
     </mat-form-field>
@@ -69,7 +69,7 @@
         <mat-hint>Puedes seleccionar más de una categoría.</mat-hint>
     </mat-form-field>
 
-    <button mat-fab extended type="submit" [disabled]="bookForm.invalid">
+    <button mat-fab extended type="submit" [disabled]="commentForm.invalid">
         <mat-icon>send</mat-icon>
         Enviar
     </button>
